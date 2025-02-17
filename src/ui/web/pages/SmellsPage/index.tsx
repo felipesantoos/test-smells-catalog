@@ -10,6 +10,10 @@ const SmellsPage: FC = () => {
     setOpenCategories((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
+  const openCategoryFromSidebar = (index: number) => {
+    setOpenCategories((prev) => ({ ...Object.keys(prev).reduce((acc, key) => ({ ...acc, [key]: false }), {}), [index]: true }));
+  };
+
   return (
     <div className={styles.pageLayout}>
       <nav className={styles.sidebar}>
@@ -17,7 +21,13 @@ const SmellsPage: FC = () => {
         <ul className={styles.sidebarList}>
           {smellsData.map((category, index) => (
             <li key={index}>
-              <a href={`#category-${index}`} className={styles.sidebarLink}>{category.category}</a>
+              <a
+                href={`#category-${index}`}
+                className={styles.sidebarLink}
+                onClick={() => openCategoryFromSidebar(index)}
+              >
+                {category.category}
+              </a>
             </li>
           ))}
         </ul>
