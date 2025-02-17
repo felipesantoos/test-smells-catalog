@@ -1,7 +1,7 @@
-/* General container */
-.container {
-	width: 100%;
-	max-width: 900px;
+/* Layout styling */
+.pageLayout {
+	display: flex;
+	max-width: 1200px;
 	margin: auto;
 	padding: 2rem;
 	font-family: "Arial", sans-serif;
@@ -9,7 +9,53 @@
 	line-height: 1.6;
 }
 
-/* Page title */
+/* Sidebar styling */
+.sidebar {
+	width: 250px;
+	min-height: 100vh;
+	background-color: #f8f9fa;
+	border-right: 1px solid #ddd;
+	padding: 1.5rem;
+	position: fixed;
+	left: 0;
+	top: 0;
+	overflow-y: auto;
+}
+
+.sidebarTitle {
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin-bottom: 1rem;
+	color: #222;
+}
+
+.sidebarList {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebarLink {
+	display: block;
+	padding: 0.5rem 1rem;
+	color: #0056b3;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: background-color 0.2s;
+}
+
+.sidebarLink:hover {
+	background-color: #e9ecef;
+}
+
+/* Content area */
+.content {
+	flex: 1;
+	margin-left: 270px;
+	/* Space for sidebar */
+	padding: 2rem;
+}
+
+/* Page heading */
 .heading {
 	font-size: 2rem;
 	font-weight: bold;
@@ -108,7 +154,6 @@
 	padding: 1rem 2rem;
 	margin-bottom: 1rem;
 	background-color: #fdecea;
-	/* Light red background */
 	border-radius: 5px;
 	border-left: 4px solid #e57373;
 }
