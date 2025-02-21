@@ -1,10 +1,12 @@
-import { FC, useState } from "react";
+import {FC, useEffect, useState} from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import styles from "./styles.module.scss";
 import smellsData from "./data";
+import {MdDarkMode, MdOutlineDarkMode} from "react-icons/md";
 
 const SmellsPage: FC = () => {
   const [openCategories, setOpenCategories] = useState<Record<number, boolean>>({});
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleCategory = (index: number) => {
     setOpenCategories((prev) => ({ ...prev, [index]: !prev[index] }));
@@ -14,27 +16,58 @@ const SmellsPage: FC = () => {
     setOpenCategories((prev) => ({ ...Object.keys(prev).reduce((acc, key) => ({ ...acc, [key]: false }), {}), [index]: true }));
   };
 
-  return (
-    <div className={styles.pageLayout}>
-      <nav className={styles.sidebar}>
-        <h2 className={styles.sidebarTitle}>Navegação</h2>
-        <ul className={styles.sidebarList}>
-          {smellsData.map((category, index) => (
-            <li key={index}>
-              <a
-                href={`#category-${index}`}
-                className={styles.sidebarLink}
-                onClick={() => openCategoryFromSidebar(index)}
-              >
-                {category.category}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <div className={styles.content}>
-        <h1 className={styles.heading}>Categorias de Smells em Testes BDD</h1>
-        {smellsData.map((category, index) => (
+  useEffect(() => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+          setIsDarkMode(savedTheme === "dark");
+      }
+  }, []);
+
+    const toggleTheme = () => {
+        setIsDarkMode((prev) => {
+            const newTheme = !prev;
+            localStorage.setItem("theme", newTheme ? "dark" : "light");
+            window.dispatchEvent(new CustomEvent("themeChange", { detail: newTheme }));
+            return newTheme;
+        });
+    };
+
+
+    return (
+    <div className={`${styles.pageLayout} ${isDarkMode ? styles.darkMode : styles.lightMode}`}>
+        <nav className={styles.sidebar}>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    textAlign: "center",
+                    marginBottom: "1rem"
+                }}
+            >
+                <h2 className={styles.sidebarTitle}>Navegação</h2>
+                <button className={styles.themeButton} onClick={toggleTheme}
+                        aria-label={`Ativar ${isDarkMode ? "light mode" : "dark mode"}`}>
+                    {isDarkMode ? <MdDarkMode size={28} color="white"/> : <MdOutlineDarkMode size={28} color="black"/>}
+                </button>
+            </div>
+            <ul className={styles.sidebarList}>
+                {smellsData.map((category, index) => (
+                    <li key={index}>
+                        <a
+                            href={`#category-${index}`}
+                            className={styles.sidebarLink}
+                            onClick={() => openCategoryFromSidebar(index)}
+                        >
+                            {category.category}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+        <div className={styles.content}>
+            <h1 className={styles.heading}>Categorias de Smells em Testes BDD</h1>
+            {smellsData.map((category, index) => (
           <div key={index} id={`category-${index}`} className={styles.categorySection}>
             <button className={styles.categoryTitle} onClick={() => toggleCategory(index)}>
               {category.category}
