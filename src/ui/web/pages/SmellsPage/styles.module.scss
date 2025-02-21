@@ -289,18 +289,11 @@
 }
 
 /* Image styling */
-.lightMode .image {
+.image {
 	max-width: 100%;
 	height: auto;
 	border: 1px solid #ddd;
 	border-radius: 5px;
 	padding: 4px;
 	background: #fff;
-}
-
-.darkMode .image {
-	max-width: 100%;
-	height: auto;
-	border-radius: 5px;
-	padding: 4px;
 }
