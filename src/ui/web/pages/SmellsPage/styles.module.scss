@@ -1,16 +1,36 @@
 /* Layout styling */
-.pageLayout {
+.lightMode .pageLayout {
 	display: flex;
 	max-width: 1200px;
 	margin: auto;
 	padding: 2rem;
 	font-family: "Arial", sans-serif;
-	color: #333;
+	color: #2B3137;
 	line-height: 1.6;
 }
 
+.darkMode .pageLayout {
+	display: flex;
+	max-width: 1200px;
+	margin: auto;
+	padding: 2rem;
+	font-family: "Arial", sans-serif;
+	color: #ffffff;
+	line-height: 1.6;
+}
+
+/* Button removing default styles */
+.themeButton {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	padding: 0;
+	cursor: pointer;
+	appearance: none;
+}
+
 /* Sidebar styling */
-.sidebar {
+.lightMode .sidebar {
 	width: 250px;
 	min-height: 100vh;
 	background-color: #f8f9fa;
@@ -22,11 +42,28 @@
 	overflow-y: auto;
 }
 
-.sidebarTitle {
+.darkMode .sidebar {
+	width: 250px;
+	min-height: 100vh;
+	background-color: #2B3137;
+	border-right: 1px solid #24292E;
+	padding: 1.5rem;
+	position: fixed;
+	left: 0;
+	top: 0;
+	overflow-y: auto;
+}
+
+.lightMode .sidebarTitle {
 	font-size: 1.2rem;
 	font-weight: bold;
-	margin-bottom: 1rem;
-	color: #222;
+	color: #24292E;
+}
+
+.darkMode .sidebarTitle {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #ddd;
 }
 
 .sidebarList {
@@ -34,7 +71,7 @@
 	padding: 0;
 }
 
-.sidebarLink {
+.lightMode .sidebarLink {
 	display: block;
 	padding: 0.5rem 1rem;
 	color: #0056b3;
@@ -43,8 +80,21 @@
 	transition: background-color 0.2s;
 }
 
-.sidebarLink:hover {
+.darkMode .sidebarLink {
+	display: block;
+	padding: 0.5rem 1rem;
+	color: #9ECBFF;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: background-color 0.2s;
+}
+
+.lightMode .sidebarLink:hover {
 	background-color: #e9ecef;
+}
+
+.darkMode .sidebarLink:hover {
+	background-color: #4a4a4a;
 }
 
 /* Content area */
@@ -56,13 +106,22 @@
 }
 
 /* Page heading */
-.heading {
+.lightMode .heading {
 	font-size: 2rem;
 	font-weight: bold;
 	margin-bottom: 1.5rem;
 	padding-bottom: 0.5rem;
 	border-bottom: 2px solid #e0e0e0;
-	color: #222;
+	color: #24292E;
+}
+
+.darkMode .heading {
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 1.5rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 2px solid #e0e0e0;
+	color: #e0e0e0;
 }
 
 /* Category section */
@@ -71,7 +130,7 @@
 }
 
 /* Category title button */
-.categoryTitle {
+.lightMode .categoryTitle {
 	font-size: 1.3rem;
 	font-weight: 600;
 	width: 100%;
@@ -87,8 +146,29 @@
 	transition: background-color 0.2s;
 }
 
-.categoryTitle:hover {
+.darkMode .categoryTitle {
+	font-size: 1.3rem;
+	font-weight: 600;
+	width: 100%;
+	text-align: left;
+	padding: 0.75rem;
+	background-color: #2B3137;
+	border: 1px solid #24292E;
+	color: #E0E0E0;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: background-color 0.2s;
+}
+
+.lightMode .categoryTitle:hover {
 	background-color: #eceff1;
+}
+
+.darkMode .categoryTitle:hover {
+	background-color: #4a4a4a;
 }
 
 /* Toggle icon */
@@ -113,7 +193,7 @@
 }
 
 /* Smell wrapper */
-.smellWrapper {
+.lightMode .smellWrapper {
 	margin-bottom: 1rem;
 	padding: 1rem;
 	border-left: 4px solid #ddd;
@@ -121,39 +201,82 @@
 	border-radius: 5px;
 }
 
+.darkMode .smellWrapper {
+	margin-bottom: 1rem;
+	padding: 1rem;
+	border-left: 4px solid #24292E;
+	background: #2B3137;
+	border-radius: 5px;
+}
+
 /* Smell title */
-.smellTitle {
+.lightMode .smellTitle {
 	font-size: 1.25rem;
 	font-weight: bold;
 	color: #1a202c;
 	margin-bottom: 0.5rem;
 }
 
+.darkMode .smellTitle {
+	font-size: 1.25rem;
+	font-weight: bold;
+	color: #9ECBFF;
+	margin-bottom: 0.5rem;
+}
+
 /* Section subtitles */
-.sectionTitle {
+.lightMode .sectionTitle {
 	font-size: 1.1rem;
 	font-weight: bold;
     margin: 0.5rem 0;
 	color: #2c3e50;
 }
 
+.darkMode .sectionTitle {
+	font-size: 1.1rem;
+	font-weight: bold;
+	margin: 0.5rem 0;
+	color: #ffffff;
+}
+
 /* Description section with light blue background */
-.smellDescription {
+.lightMode .smellDescription {
     font-size: 1rem;
-    color: #333;
+    color: #2B3137;
     margin-bottom: 0.5rem;
     background-color: #e3f2fd; /* Light blue background */
     padding: 1rem 1rem;
     border-radius: 5px;
     border-left: 4px solid #64b5f6; /* Slightly darker blue border */
-}  
+}
+
+.darkMode .smellDescription {
+	font-size: 1rem;
+	color: #e0e0e0;
+	margin-bottom: 0.5rem;
+	background-color: #5a5a5a; /* Light blue background */
+	padding: 1rem 1rem;
+	border-radius: 5px;
+	border-left: 4px solid #64b5f6; /* Slightly darker blue border */
+}
 
 /* Consequences section */
-.smellConsequences {
+.lightMode .smellConsequences {
 	list-style-type: disc;
+	color: #2B3137;
 	padding: 1rem 2rem;
 	margin-bottom: 1rem;
 	background-color: #fdecea;
+	border-radius: 5px;
+	border-left: 4px solid #e57373;
+}
+
+.darkMode .smellConsequences {
+	list-style-type: disc;
+	color: #e0e0e0;
+	padding: 1rem 2rem;
+	margin-bottom: 1rem;
+	background-color: #5a5a5a;
 	border-radius: 5px;
 	border-left: 4px solid #e57373;
 }
@@ -166,11 +289,18 @@
 }
 
 /* Image styling */
-.image {
+.lightMode .image {
 	max-width: 100%;
 	height: auto;
 	border: 1px solid #ddd;
 	border-radius: 5px;
 	padding: 4px;
 	background: #fff;
+}
+
+.darkMode .image {
+	max-width: 100%;
+	height: auto;
+	border-radius: 5px;
+	padding: 4px;
 }
